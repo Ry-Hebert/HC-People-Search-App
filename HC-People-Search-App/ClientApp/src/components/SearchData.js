@@ -22,7 +22,7 @@ const SearchData = () => {
         setPeopleData({ dataRes: data, loading: false })
     }
 
-    useEffect(()=>{populatePeopleData()}, [])
+    useEffect(()=>{populatePeopleData()}, [1])
 
     const renderForecastsTable = (forecasts) => {
         return (

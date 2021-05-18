@@ -11,9 +11,13 @@ namespace HC_People_Search_App.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        private static readonly string[] fName = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Jim", "Sarah", "Alex", "Amy", "Tim", "Lex", "Amos", "Lee", "Taylor", "Reagan", "Cameron", "James", "Zack", "Zach", "Alex", "Harmony", "Eliot", "Ellen", "Aphrodite", "Cleo", "Bill", "Ted", "Marcus", "Noah", "Weston", "Ben", "Katie", "Harlly", "Marly", "Susanna", "Maria", "Stanley", "Han", "Luke", "Landon", "Thor"
+        };
+        private static readonly string[] lName = new[]
+        {
+            "Smith", "Moa", "McCormick", "Caballero", "Faulkner", "Kamiesoko", "Leland", "Gosset", "Holt", "Hudgins", "Evans", "Brown", "Rawlins", "Oneill", "Oneil", "Carter", "Jackson", "Willson", "Hammond", "Ragnarson", "Erickson", "Washington", "Harper", "Fallow", "McCloud", "McCleod", "Lee", "Leeland", "Carlson", "Annson", "Clark", "Shalows", "Winchester", "Adams", "Schumester", "Kelly", "Yelnats", "Solo", "Skywalker", "Thorson", "Willcaster"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
@@ -27,11 +31,11 @@ namespace HC_People_Search_App.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 10).Select(index => new WeatherForecast
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
+                Date = fName[rng.Next(fName.Length)] + " " + lName[rng.Next(lName.Length)],
+                TemperatureC = rng.Next(1, 99999),
+                Summary = fName[rng.Next(fName.Length)]
             })
             .ToArray();
         }
