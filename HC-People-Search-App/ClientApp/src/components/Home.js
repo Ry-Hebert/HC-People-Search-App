@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SearchData } from './SearchData'
+import SearchData from './SearchData'
 
 export class Home extends Component {
   static displayName = Home.name;

@@ -19,14 +19,18 @@
   "devDependencies": {
     "ajv": "^6.9.1",
     "cross-env": "^5.2.0",
-    "typescript": "^3.7.5",
     "eslint": "^6.8.0",
     "eslint-config-react-app": "^5.2.0",
     "eslint-plugin-flowtype": "^4.6.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.3",
-    "nan": "^2.14.1"
+    "nan": "^2.14.1",
+    "node-sass": "^4.14.1",
+    "sass": "^1.32.13",
+    "sass-loader": "^11.1.1",
+    "typescript": "^3.7.5",
+    "webpack": "^5.37.0"
   },
   "eslintConfig": {
     "extends": "react-app"
