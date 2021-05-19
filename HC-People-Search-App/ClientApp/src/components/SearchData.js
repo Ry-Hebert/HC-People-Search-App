@@ -9,7 +9,8 @@ import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
     searchField: {
-        width: '100%'
+        width: '100%',
+        margin: "1rem 0rem 2rem",
     },
     root: {
         width: '100%',
@@ -32,11 +33,41 @@ const SearchData = () => {
     const classes = useStyles()
     // Setup of state to handle People Data Results
     const [peopleData, setPeopleData] = useState({ dataRes: [null], loading: true })
+    const [searchData, setSearchData] = useState({ dataRes: [null], loading: true })
+
+    const search = (arr, s) => {
+        console.log('In Search')
+        console.log(arr)
+        console.log(s)
+        
+        const doesContain = (item) =>{
+            let noPicture = {name: item.name, address: item.address, age: item.age, interests: item.interests}
+            let getValues = Object.values(noPicture)
+            let check = getValues.toString().toLowerCase()
+            check = check.replace(/[^a-zA-Z0-9]/g, "")
+            console.log(check)
+            console.log(s.toLowerCase().replace(/[^a-zA-Z0-9]/g, ""))
+            console.log(check.includes(s.toLowerCase().replace(/[^a-zA-Z0-9]/g, "")))
+            return check.includes(s.toLowerCase().replace(/[^a-zA-Z0-9]/g, ""))
+        }
+        
+        let matches = arr.filter(doesContain)
+
+        console.log(matches)
+        return matches
+    };
 
     const populatePeopleData = async () => {
         const response = await fetch('peoplesearch')
         const data = await response.json()
         setPeopleData({ dataRes: data, loading: false })
+    }
+
+    const searchFilterPeople = (event) => {
+        let data = search(peopleData.dataRes, event.target.value)
+        console.log("Search Return: ")
+        console.log(data)
+        setSearchData({ dataRes: data, loading: false })
     }
 
     useEffect(()=>{populatePeopleData()}, [1])
@@ -57,13 +88,13 @@ const SearchData = () => {
         );
       }
 
-
     console.log(peopleData)
-    let contents = peopleData.loading ? <p><em>Loading...</em></p> : renderPeopleListTable(peopleData.dataRes);
+    console.log(searchData)
+    let contents = peopleData.loading ? <p><em>Loading...</em></p> : searchData.loading ? renderPeopleListTable(peopleData.dataRes) : renderPeopleListTable(searchData.dataRes);
 
     return (
         <div className={classes.searchContent}>
-            <TextField className={classes.searchField} id='hcSearchField' label='Search' variant='outlined'></TextField>
+            <TextField className={classes.searchField} id='hcSearchField' label='Search' variant='outlined' onChange={searchFilterPeople}></TextField>
             {contents}
         </div>
     );

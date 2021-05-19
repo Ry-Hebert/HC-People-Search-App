@@ -135,10 +135,10 @@ namespace HC_People_Search_App.Controllers
         public IEnumerable<PeopleSearch> Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 10).Select(index => new PeopleSearch
+            return Enumerable.Range(1, 25).Select(index => new PeopleSearch
             {
                 Name = fName[rng.Next(fName.Length)] + " " + lName[rng.Next(lName.Length)],
-                Address = rng.Next(1, 99999).ToString() + " " + streetPre[rng.Next(streetPre.Length)] + " " + street[rng.Next(street.Length)] + " " + streetPost[rng.Next(streetPost.Length)] + "\n" + city[rng.Next(city.Length)] + ", " + state[rng.Next(state.Length)] + " " + rng.Next(10000, 100000),
+                Address = rng.Next(1, 99999).ToString() + " " + streetPre[rng.Next(streetPre.Length)] + " " + street[rng.Next(street.Length)] + " " + streetPost[rng.Next(streetPost.Length)] + ", " + city[rng.Next(city.Length)] + ", " + state[rng.Next(state.Length)] + ", " + rng.Next(10000, 100000),
                 Age = rng.Next(18, 99),
                 Interests = interests[rng.Next(interests.Length)],
                 Image = image[rng.Next(interests.Length)]
