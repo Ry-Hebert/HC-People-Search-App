@@ -2,7 +2,7 @@
 
 ## Contents
 **[Setup & Run](#setup-and-run-locally)**<br>
-**[Project Specs](#project-specs)**<br>
+**[Project Specs](#project-specifications)**<br>
   
 ## Setup and Run Locally
 
@@ -12,7 +12,7 @@ From there you will run the command `dotnet run`
 
 The project should now be running on any local browser at `https://localhost:5001`
 
-## Project Specs:
+## Project Specifications:
 
 The People Search Application  
  
