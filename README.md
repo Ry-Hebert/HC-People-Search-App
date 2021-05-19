@@ -4,7 +4,7 @@
 **[Setup & Run](#setup-and-run-locally)**<br>
 **[Project Specs](#project-specs)**<br>
   
-### Setup and Run Locally
+## Setup and Run Locally
 
 Clone the repository to your local machine and then navigate to the `HC-People-Search-App` directory within it.
 
@@ -12,7 +12,7 @@ From there you will run the command `dotnet run`
 
 The project should now be running on any local browser at `https://localhost:5001`
 
-#### Project Specs:
+## Project Specs:
 
 The People Search Application  
  
