@@ -2,7 +2,7 @@ using System;
 
 namespace HC_People_Search_App
 {
-    public class PeopleSearch
+    public class WeatherForecast
     {
         public string Name { get; set; }
 

@@ -7,9 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace HC_People_Search_App.Controllers
 {
-    // [ApiController]
+    [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class PeopleSearchController : ControllerBase
     {
         private static readonly string[] fName = new[]
         {
@@ -22,6 +22,26 @@ namespace HC_People_Search_App.Controllers
         private static readonly string[] interests = new[]
         {
             "Golf", "Reading", "Gaming", "Disc Golf", "Rock Climbing", "Tennis", "Swimming", "Skiing", "Snowboarding", "Guitar", "Photography", "Gardening", "Cycling", "Mountain Biking", "Bouldering", "Working Out", "TV", "Movies", "Filmography", "Sleep", "Food", "Cooking", "Cats", "Dogs", "Art", "Painting", "Woodworking", "Drawing", "Digital Animation", "Digital Artwork", "Buying $GME", "Holding GME", "Social Media", "Driving", "Racing", "Motorcycles", "Dirt Bikes", "ATV's", "Horse Riding", "Grilling", "Cars", "Music", "Hiking", "Kite Surfing", "Surfing", "Kayaking", "Boating", "Fishing", "Basketball", "Running", "Drone Racing", "Custom Drones", "Smoking (Foods)"
+        };
+        private static readonly string[] streetPre = new[]
+        {
+            "N", "S", "E", "W", ""
+        };
+        private static readonly string[] streetPost = new[]
+        {
+            "Rd", "Ct", "Ave", "Bch", "Blf", "Blvd", "Cir", "Dr", "Ext", "Fld", "Hwy", "Fwy", "Hollow", "Hills", "Haven", "Meadows", "Orchard", "Mtn", "Mountains", "Point", "Ridge", "Valley"
+        };
+        private static readonly string[] street = new[]
+        {
+            "1st", "2nd", "3rd", "4th", "5th", "Park", "Main", "Apache", "Ceder", "Aspen", "Oak", "Magnolia", "Dogwood", "Maple", "Lee", "Holly", "Pine", "Jackson", "Spruce", "Birch", "Willow", "Palo Verde", "Mesquite", "Sunset", "Navajo", "Quail", "Elm", "Redwood", "Cottonwood", "Canyon", "Canyon View", "Sunset"
+        };
+        private static readonly string[] city = new[]
+        {
+            "Washington", "Springfield", "Franklin", "Greenville", "Bristol", "Clinton", "Fairview", "Salem", "Madison", "Georgetown", "Arlington", "Centerville", "Lebanon", "Chester", "Dayton", "Dover", "Salem", "Oakland", "Milton", "Newport", "Riverside", "Ashland", "Bloomington", "Manchester", "Oxford", "Winchester", "Burlington", "Jackson", "Milford", "Clayton", "Auburn", "Kingston", "Lexington"
+        };
+        private static readonly string[] state = new[]
+        {
+            "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "VI", "WA", "WV", "WI", "WY"
         };
         private static readonly string[] image = new[]
         {            
@@ -104,21 +124,21 @@ namespace HC_People_Search_App.Controllers
 
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<PeopleSearchController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public PeopleSearchController(ILogger<PeopleSearchController> logger)
         {
             _logger = logger;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<PeopleSearch> Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 10).Select(index => new WeatherForecast
+            return Enumerable.Range(1, 10).Select(index => new PeopleSearch
             {
                 Name = fName[rng.Next(fName.Length)] + " " + lName[rng.Next(lName.Length)],
-                Address = rng.Next(1, 99999).ToString(),
+                Address = rng.Next(1, 99999).ToString() + " " + streetPre[rng.Next(streetPre.Length)] + " " + street[rng.Next(street.Length)] + " " + streetPost[rng.Next(streetPost.Length)] + "\n" + city[rng.Next(city.Length)] + ", " + state[rng.Next(state.Length)] + " " + rng.Next(10000, 100000),
                 Age = rng.Next(18, 99),
                 Interests = interests[rng.Next(interests.Length)],
                 Image = image[rng.Next(interests.Length)]
