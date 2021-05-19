@@ -1,8 +1,8 @@
 # HC-People-Search-App
 
 ## Contents
-**[Setup & Run](#setup-and-run-locally)
-**[Project Specs](#project-specs)
+**[Setup & Run](#setup-and-run-locally)**<br>
+**[Project Specs](#project-specs)**<br>
   
 ### Setup and Run Locally
 
